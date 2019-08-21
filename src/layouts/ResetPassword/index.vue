@@ -1,5 +1,11 @@
 <template>
-  <h1>ResetPassword</h1>
+  <div class="main-body">
+    <div class="flex-column">
+      <h1>Sign In</h1>
+      <p>email</p>
+      <input type="text" />
+    </div>
+  </div>
 </template>
 
 <script>

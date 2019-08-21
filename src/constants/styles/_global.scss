@@ -1,8 +1,14 @@
 .container {
-  @include flex-center;
   width: 100%;
   padding: 0 20px;
   box-sizing: border-box;
+  background-color: white;
+}
+.main-body {
+  width: 100%;
+  padding: 0 100px;
+  box-sizing: border-box;
+  background-color: white;
 }
 .flex-row {
   @include flex-center;
@@ -18,8 +24,13 @@
 .space-between {
   justify-content: space-between;
 }
+.flex-start {
+  justify-content: flex-start;
+  align-items: flex-start;
+}
 ul,
-li {
+li,
+p {
   padding: 0;
   margin: 0;
 }
@@ -28,4 +39,9 @@ li {
 }
 a {
   text-decoration: none;
+}
+#app {
+  font-family: "Avenir", Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
