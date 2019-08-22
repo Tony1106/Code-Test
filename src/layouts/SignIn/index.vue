@@ -2,17 +2,27 @@
   <div class="main-body">
     <div class="flex-column flex-start content">
       <typography headTitle>Sign In</typography>
-      <div v-if="serviceStatus.error" class="error">{{serviceStatus.error}}</div>
-      <div v-if="serviceStatus.success" class="success">{{serviceStatus.success}}</div>
-      <text-input label="Email" :error="errors.email" v-model="values.email" type="email"></text-input>
-      <text-input
-        label="Password"
-        :error="errors.password"
-        v-model="values.password"
-        type="password"
-      ></text-input>
+      <div v-if="serviceStatus.error" class="error">
+        <i class="material-icons">close</i>
+        {{serviceStatus.error}}
+      </div>
+      <div v-if="serviceStatus.success" class="success">
+        <span>
+          <i class="material-icons">done</i>
+        </span>
+        {{serviceStatus.success}}
+      </div>
+      <div class="form">
+        <text-input label="Email" :error="errors.email" v-model="values.email" type="email"></text-input>
+        <text-input
+          label="Password"
+          :error="errors.password"
+          v-model="values.password"
+          type="password"
+        ></text-input>
+      </div>
       <div class="reset-password">
-        <a href="./resetPassword">Want to reset password?</a>
+        <a href="./resetpassword">Want to reset password?</a>
       </div>
       <v-button icon="keyboard_arrow_right" v-on:click="signIn">Login</v-button>
     </div>
@@ -26,9 +36,11 @@ import VButton from "@/components/Buttons";
 import SideImage from "@/components/Images/SideImage";
 import Typography from "@/components/Typography";
 
-import { service } from "@/services";
+import { service, saveToken } from "@/services";
+import { authentication } from "@/mixins/authentication";
 export default {
   name: "SignIn",
+  mixins: [authentication],
   data() {
     return {
       values: {
@@ -52,11 +64,12 @@ export default {
         service("https://reqres.in/api/login", "post", this.values)
           .then(response => {
             console.log(response);
-            this.serviceStatus.success = "Login sucess";
+            this.handleServiceStatus("Sucess login");
             let { token } = response;
+            saveToken(token);
           })
           .catch(err => {
-            this.serviceStatus.error = err;
+            this.handleServiceStatus(null, "The email or password wrong");
           });
       }
     },
@@ -73,21 +86,7 @@ export default {
         this.errors.email = "Please input the valid email.";
       }
       if (password.length < 6)
-        this.errors.password = "Please input the valid password.";
-    },
-    validEmail(email) {
-      var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-      return re.test(email);
-    },
-    isFormValid() {
-      let { errors } = this;
-      let isValid = true;
-      for (const key in errors) {
-        if (errors.hasOwnProperty(key)) {
-          if (errors[key]) isValid = false;
-        }
-      }
-      return isValid;
+        this.errors.password = "Password must be more than 6 characters.";
     }
   },
   components: {
@@ -108,19 +107,30 @@ export default {
   align-items: flex-start;
   .content {
     @include side-content;
+    .form {
+      width: 100%;
+    }
     .reset-password {
-      margin-top: 15px;
-      margin-bottom: 30px;
+      position: relative;
+      top: -40px;
     }
   }
   .side-image {
     justify-self: stretch;
   }
   .error {
+    @include flex-center;
     color: red;
+    i {
+      padding-right: 10px;
+    }
   }
   .success {
+    @include flex-center;
     color: green;
+    i {
+      padding-right: 10px;
+    }
   }
 }
 </style>

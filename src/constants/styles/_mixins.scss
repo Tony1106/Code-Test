@@ -6,4 +6,6 @@
 
 @mixin side-content {
   width: 400px;
+  height: 500px;
+  justify-content: space-between;
 }

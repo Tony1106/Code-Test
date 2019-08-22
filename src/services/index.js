@@ -16,3 +16,7 @@ export const service = (url, method = "get", data) => {
     });
   });
 };
+
+export const saveToken = token => {
+  localStorage.setItem("token", token);
+};
