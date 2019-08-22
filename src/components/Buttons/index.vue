@@ -1,5 +1,5 @@
 <template>
-  <button v-bind:class="['button', buttonColor, buttonType]">
+  <button v-bind:class="['button', buttonColor, buttonType]" v-on:click="$emit('click')">
     <slot></slot>
     <div v-if="icon">
       <i class="material-icons">{{icon}}</i>

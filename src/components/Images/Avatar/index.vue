@@ -1,13 +1,13 @@
 <template>
-  <img v-bind:src="url" v-bind:alt="alt" v-bind:class="['avatar', classes]" />
+  <img :src="getImageURL" :alt="alt" :class="['avatar', classes]" />
 </template>
 
 <script>
+import { handleURLImport } from "@/mixins/handleURLImport";
 export default {
   name: "Avatar",
+  mixins: [handleURLImport],
   props: {
-    url: String,
-    alt: String,
     size: { type: String, default: "small" }
   },
   computed: {
