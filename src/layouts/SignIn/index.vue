@@ -1,9 +1,14 @@
 <template>
   <div class="main-body">
     <div class="flex-column flex-start content">
-      <h1>Sign In</h1>
-      <text-input label="Email" error="this is an error" v-model="values.email" type="email"></text-input>
-      <text-input label="Password" v-model="values.password" type="password"></text-input>
+      <typography headTitle>Sign In</typography>
+      <text-input label="Email" :error="errors.email" v-model="values.email" type="email"></text-input>
+      <text-input
+        label="Password"
+        :error="errors.password"
+        v-model="values.password"
+        type="password"
+      ></text-input>
       <div class="reset-password">
         <a href="./resetPassword">Want to reset password?</a>
       </div>
@@ -17,11 +22,16 @@
 import TextInput from "@/components/Forms/TextInput";
 import VButton from "@/components/Buttons";
 import SideImage from "@/components/Images/SideImage";
+import Typography from "@/components/Typography";
 export default {
   name: "SignIn",
   data() {
     return {
       values: {
+        email: "",
+        password: ""
+      },
+      errors: {
         email: "",
         password: ""
       }
@@ -30,12 +40,33 @@ export default {
   methods: {
     signIn() {
       console.log("sign in");
+      this.validateForm();
+    },
+    validateForm() {
+      let { email, password } = this.values;
+      //Reset erros state
+      this.errors = {
+        email: "",
+        password: ""
+      };
+      if ((this.email = "")) {
+        this.errors.email = "Email is required.";
+      } else if (!this.validEmail(email)) {
+        this.errors.email = "Please input the valid email";
+      }
+      if (password.length < 6)
+        this.errors.password = "Please input the valid password.";
+    },
+    validEmail: function(email) {
+      var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+      return re.test(email);
     }
   },
   components: {
     TextInput,
     VButton,
-    SideImage
+    SideImage,
+    Typography
   }
 };
 </script>

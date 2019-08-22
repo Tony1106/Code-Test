@@ -1,4 +1,8 @@
-<template></template>
+<template>
+  <component :is="_variant" :class="['typography', classes]">
+    <slot></slot>
+  </component>
+</template>
 
 <script>
 export default {
@@ -6,9 +10,33 @@ export default {
   props: {
     headTitle: Boolean,
     variant: String
+  },
+  computed: {
+    classes() {
+      if (this.headTitle) {
+        return "head_title";
+      } else return "";
+    },
+    _variant() {
+      let _variant = "h5";
+      if (this.headTitle) {
+        _variant = "h1";
+      }
+      if (this.variant) {
+        _variant = this.variant;
+      }
+      return _variant;
+    }
   }
 };
 </script>
 
-<style>
+<style lang="scss" scoped>
+.typography {
+}
+.head_title {
+  font-size: 45px;
+  margin-bottom: 70px;
+  font-weight: 500;
+}
 </style>
