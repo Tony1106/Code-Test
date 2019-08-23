@@ -37,7 +37,7 @@ export default {
   name: "Header",
   data() {
     return {
-      isShowMenu: true
+      isShowMenu: false
     };
   },
   methods: {
@@ -57,6 +57,7 @@ export default {
 .container {
   height: 100px;
   position: relative;
+  z-index: 1000;
   @include sm {
     height: 50px;
   }
@@ -82,7 +83,8 @@ export default {
         z-index: 999;
         width: 100%;
         background: #fb7474;
-        visibility: hidden;
+        transform: translateY(-200px);
+        transition: 0.3s;
       }
       .menu-wrapper {
         @include sm {
@@ -108,7 +110,7 @@ export default {
       }
     }
     .show {
-      visibility: visible;
+      transform: translateY(0);
     }
     .burger {
       display: none;
