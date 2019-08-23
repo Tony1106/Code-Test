@@ -24,8 +24,8 @@ Run the project on local host:
 npm  run serve
 ```
 
-## Usage
-.
+## Folder structure
+```
 📦src
  ┣ 📂assets                 # Store image and other assets.
  ┣ 📂components             # Vue components
@@ -34,58 +34,10 @@ npm  run serve
  ┃ ┗ 📜layoutController.js  # Store state to controll the application layour: Spinner, Menu, Side Bar...
  ┣ 📂mixins                 # Vue mixins, reuse logic for component
  ┣ 📂routes                 # Custom router for application
- ┣ 📂services               # Helper function for project: fetch, localStorage...
+ ┣ 📂services               # Helper functions for project: fetch, localStorage...
  ┣ 📜App.vue
  ┗ 📜main.js
-src
- ┣ assets
- ┃ ┣ login-shield.svg
- ┃ ┣ login-user.svg
- ┃ ┗ logo.png
- ┣ components
- ┃ ┣ Buttons
- ┃ ┃ ┗ index.vue
- ┃ ┣ Containers
- ┃ ┃ ┗ index.vue
- ┃ ┣ Forms
- ┃ ┃ ┗ TextInput
- ┃ ┃ ┃ ┗ index.vue
- ┃ ┣ Images
- ┃ ┃ ┣ Avatar
- ┃ ┃ ┃ ┗ index.vue
- ┃ ┃ ┗ SideImage
- ┃ ┃ ┃ ┗ index.vue
- ┃ ┣ Pages
- ┃ ┃ ┣ Footer
- ┃ ┃ ┗ Header
- ┃ ┃ ┃ ┗ index.vue
- ┃ ┣ Spinner
- ┃ ┃ ┗ index.vue
- ┃ ┣ Typography
- ┃ ┃ ┗ index.vue
- ┃ ┗ HelloWorld.vue
- ┣ constants
- ┃ ┗ styles
- ┃ ┃ ┣ _global.scss
- ┃ ┃ ┣ _mixins.scss
- ┃ ┃ ┗ _variables.scss
- ┣ layouts
- ┃ ┣ NotFound
- ┃ ┃ ┗ index.vue
- ┃ ┣ ResetPassword
- ┃ ┃ ┗ index.vue
- ┃ ┣ SignIn
- ┃ ┃ ┗ index.vue
- ┃ ┗ layoutController.js
- ┣ mixins
- ┃ ┣ authentication.js
- ┃ ┗ handleURLImport.js
- ┣ routes
- ┃ ┗ index.vue
- ┣ services
- ┃ ┗ index.js
- ┣ App.vue
- ┗ main.js
+ ```
 ## Author
 
 Tony Bui
