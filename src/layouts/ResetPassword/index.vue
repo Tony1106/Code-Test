@@ -43,6 +43,7 @@ import VButton from "@/components/Buttons";
 import SideImage from "@/components/Images/SideImage";
 import Typography from "@/components/Typography";
 
+import { LayoutEventBus } from "@/layouts/layoutController";
 import { service, saveToken } from "@/services";
 import { authentication } from "@/mixins/authentication";
 export default {
