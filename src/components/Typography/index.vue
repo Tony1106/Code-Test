@@ -35,7 +35,7 @@ export default {
 .typography {
 }
 .head_title {
-  font-size: 45px;
+  font-size: calc(2em + 1vw);
   margin-bottom: 70px;
   font-weight: 500;
 }

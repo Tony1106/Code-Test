@@ -54,7 +54,7 @@ export default {
 .button {
   color: white;
   height: 35px;
-  width: 50%;
+  width: 70%;
   padding-left: 10px;
   padding-right: 10px;
   box-sizing: border-box;
@@ -66,6 +66,9 @@ export default {
   cursor: pointer;
   &:focus {
     outline: none;
+  }
+  @include sm {
+    width: 100%;
   }
 }
 .button-with-icon {

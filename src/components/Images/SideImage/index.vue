@@ -15,6 +15,11 @@ export default {
 <style lang="scss" scoped>
 .side-image {
   max-width: 700px;
+  justify-self: stretch;
+  align-self: center;
+  @include md {
+    width: 150px;
+  }
   img {
     width: 100%;
   }

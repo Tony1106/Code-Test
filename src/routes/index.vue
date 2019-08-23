@@ -1,8 +1,8 @@
 <template>
   <div class="page">
     <v-header></v-header>
-    <spinner v-if="layoutControll.isSpinnerOn"></spinner>
-    <component v-bind:is="currentPage"></component>
+    <spinner v-if="layoutController.isSpinnerOn"></spinner>
+    <component :is="currentPage"></component>
   </div>
 </template>
 <script>
@@ -26,7 +26,7 @@ export default {
   data() {
     return {
       currentRoute: window.location.pathname,
-      layoutControll: store.state
+      layoutController: store.state
     };
   },
 

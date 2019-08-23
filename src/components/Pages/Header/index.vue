@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="container flex-row">
     <div class="flex-row space-between">
       <div class="logo">
         <img src="@/assets/logo.png" alt />
@@ -15,6 +15,9 @@
                 <a href="#">Services</a>
               </li>
             </ul>
+          </div>
+          <div class="burger">
+            <i class="material-icons">menu</i>
           </div>
           <div class="avatar">
             <avatar url="https://appfollow.io/assets/2/img/team/no-avatar.png" size="medium"></avatar>
@@ -40,14 +43,26 @@ export default {
 <style lang="scss" scoped>
 .container {
   height: 100px;
+  @include sm {
+    height: 50px;
+  }
   .logo {
     img {
       height: 50px;
+      @include md {
+        height: 30px;
+      }
+      @include sm {
+        height: 20px;
+      }
     }
   }
   .content-right {
     .menu {
       padding-right: 70px;
+      @include sm {
+        display: none;
+      }
       .menu-item {
         padding-right: 30px;
         a {
@@ -58,6 +73,18 @@ export default {
             color: $color-primary;
           }
         }
+      }
+    }
+    .burger {
+      display: none;
+      @include sm {
+        display: block;
+        padding-right: 20px;
+        cursor: pointer;
+        @include flex-center;
+      }
+      &:hover {
+        color: $color-primary;
       }
     }
     .avatar {

@@ -1,5 +1,5 @@
 <template>
-  <div class="main-body">
+  <containers type="authentication">
     <div class="flex-column flex-start content">
       <typography headTitle>New Password</typography>
       <div v-if="serviceStatus.error" class="error">
@@ -32,11 +32,12 @@
       </div>
       <v-button icon="keyboard_arrow_right" v-on:click="submitNewPassword">Save</v-button>
     </div>
-    <side-image url="login-user.svg" class="side-image"></side-image>
-  </div>
+    <side-image url="login-user.svg"></side-image>
+  </containers>
 </template>
 
 <script>
+import Containers from "@/components/Containers";
 import TextInput from "@/components/Forms/TextInput";
 import VButton from "@/components/Buttons";
 import SideImage from "@/components/Images/SideImage";
@@ -93,6 +94,7 @@ export default {
     }
   },
   components: {
+    Containers,
     TextInput,
     VButton,
     SideImage,
@@ -102,38 +104,24 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.main-body {
-  height: calc(100vh - 116px);
-  position: relative;
-  display: grid;
-  grid-template-columns: 50% 50%;
-  align-items: flex-start;
-  .content {
-    @include side-content;
-    .form {
-      width: 100%;
-    }
-    .reset-password {
-      margin-top: 15px;
-      margin-bottom: 30px;
-    }
+.content {
+  @include side-content;
+  .form {
+    width: 100%;
   }
-  .side-image {
-    justify-self: stretch;
+}
+.error {
+  @include flex-center;
+  color: red;
+  i {
+    padding-right: 10px;
   }
-  .error {
-    @include flex-center;
-    color: red;
-    i {
-      padding-right: 10px;
-    }
-  }
-  .success {
-    @include flex-center;
-    color: green;
-    i {
-      padding-right: 10px;
-    }
+}
+.success {
+  @include flex-center;
+  color: green;
+  i {
+    padding-right: 10px;
   }
 }
 </style>
