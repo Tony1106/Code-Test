@@ -117,8 +117,6 @@ export default {
     width: 100%;
     margin-bottom: 30px;
   }
-  .reset-password {
-  }
 }
 
 .error {

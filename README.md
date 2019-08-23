@@ -28,12 +28,12 @@ npm  run serve
 ```
 📦src
  ┣ 📂assets                 # Store image and other assets.
- ┣ 📂components             # Vue components
- ┣ 📂constants              # Application instants: styles, themes
+ ┣ 📂components             # Vue components: Button, Image Forms..., 
+ ┣ 📂constants              # Application constant variables: styles, themes
  ┣ 📂layouts                # Create page for Single Page Application: Sign In, Reset Password, Not Found
  ┃ ┗ 📜layoutController.js  # Store state to controll the application layour: Spinner, Menu, Side Bar...
  ┣ 📂mixins                 # Vue mixins, reuse logic for component
- ┣ 📂routes                 # Custom router for application
+ ┣ 📂routes                 # Plain VueJS router for application.
  ┣ 📂services               # Helper functions for project: fetch, localStorage...
  ┣ 📜App.vue
  ┗ 📜main.js

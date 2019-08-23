@@ -28,17 +28,12 @@ export default {
       switch (this.color) {
         case "primary":
           return "btn-primary";
-          break;
         case "secondary":
           return "btn-secondary";
-          break;
         case "warning":
           return "btn-warning";
-          break;
-
         default:
           return "btn-primary";
-          break;
       }
     },
     buttonType() {
@@ -53,10 +48,8 @@ export default {
 <style lang="scss" scoped>
 .button {
   color: white;
-  height: 35px;
   width: 70%;
-  padding-left: 10px;
-  padding-right: 10px;
+  padding: 7px 10px;
   box-sizing: border-box;
   font-size: 18px;
   font-weight: 500;
