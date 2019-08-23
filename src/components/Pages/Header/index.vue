@@ -6,8 +6,8 @@
       </div>
       <div class="content-right">
         <div class="flex-row">
-          <div class="menu">
-            <ul class="flex-row">
+          <div :class="['menu', {'show': isShowMenu}]">
+            <ul class="flex-row menu-wrapper">
               <li class="menu-item">
                 <a href="#">About Frankie</a>
               </li>
@@ -16,7 +16,7 @@
               </li>
             </ul>
           </div>
-          <div class="burger">
+          <div class="burger" @click="toogleMenu">
             <i class="material-icons">menu</i>
           </div>
           <div class="avatar">
@@ -34,6 +34,19 @@
 <script>
 import Avatar from "@/components/Images/Avatar";
 export default {
+  name: "Header",
+  data() {
+    return {
+      isShowMenu: true
+    };
+  },
+  methods: {
+    toogleMenu() {
+      console.log(this.isShowMenu);
+
+      this.isShowMenu = !this.isShowMenu;
+    }
+  },
   components: {
     Avatar
   }
@@ -43,6 +56,7 @@ export default {
 <style lang="scss" scoped>
 .container {
   height: 100px;
+  position: relative;
   @include sm {
     height: 50px;
   }
@@ -61,19 +75,40 @@ export default {
     .menu {
       padding-right: 70px;
       @include sm {
-        display: none;
+        position: absolute;
+        padding: 20px 0;
+        top: 50px;
+        left: 0;
+        z-index: 999;
+        width: 100%;
+        background: #fb7474;
+        visibility: hidden;
       }
-      .menu-item {
-        padding-right: 30px;
-        a {
-          color: black;
-          transition: 0.3s;
-          font-weight: 500;
-          &:hover {
-            color: $color-primary;
+      .menu-wrapper {
+        @include sm {
+          flex-direction: column;
+        }
+        .menu-item {
+          padding-right: 30px;
+          @include sm {
+            padding-bottom: 10px;
+            padding-right: 0;
+          }
+          a {
+            color: black;
+            font-weight: 500;
+            &:hover {
+              color: $color-primary;
+              @include sm {
+                color: white;
+              }
+            }
           }
         }
       }
+    }
+    .show {
+      visibility: visible;
     }
     .burger {
       display: none;
