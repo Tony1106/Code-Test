@@ -40,8 +40,8 @@ npm  run serve
  ```
 ## Author
 
-Tony Bui
-Phone: 0449 70 1106
-Email: buiminhtien06@gmail.com
+- Tony Bui
+- Phone: 0449 70 1106
+- Email: buiminhtien06@gmail.com
 
 Tech Stacks: React, Vue, Node, PHP, Firebase, MongoDB, MySQL...
