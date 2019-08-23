@@ -8,14 +8,20 @@
         <div class="flex-row">
           <div class="menu">
             <ul class="flex-row">
-              <li class="menu-item">About Frankie</li>
-              <li class="menu-item">About Frankie</li>
+              <li class="menu-item">
+                <a href="#">About Frankie</a>
+              </li>
+              <li class="menu-item">
+                <a href="#">Services</a>
+              </li>
             </ul>
           </div>
-          <avatar url="https://appfollow.io/assets/2/img/team/no-avatar.png" size="medium"></avatar>
-          <span>
-            <i class="material-icons">arrow_drop_down</i>
-          </span>
+          <div class="avatar">
+            <avatar url="https://appfollow.io/assets/2/img/team/no-avatar.png" size="medium"></avatar>
+            <button>
+              <i class="material-icons">arrow_drop_down</i>
+            </button>
+          </div>
         </div>
       </div>
     </div>
@@ -44,6 +50,25 @@ export default {
       padding-right: 70px;
       .menu-item {
         padding-right: 30px;
+        a {
+          color: black;
+          transition: 0.3s;
+          font-weight: 500;
+          &:hover {
+            color: $color-primary;
+          }
+        }
+      }
+    }
+    .avatar {
+      @include flex-center;
+      button {
+        background: transparent;
+        border: none;
+        cursor: pointer;
+        &:focus {
+          outline: none;
+        }
       }
     }
   }
