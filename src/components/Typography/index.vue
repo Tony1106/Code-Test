@@ -1,5 +1,5 @@
 <template>
-  <component :is="_variant" :class="['typography', classes]">
+  <component :is="_variant" :class="classes">
     <slot></slot>
   </component>
 </template>
@@ -13,9 +13,9 @@ export default {
   },
   computed: {
     classes() {
-      if (this.headTitle) {
-        return "head_title";
-      } else return "";
+      let _classes = ["typography"];
+      if (this.headTitle) _classes.push("head_title");
+      return _classes;
     },
     _variant() {
       let _variant = "h5";

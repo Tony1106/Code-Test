@@ -13,9 +13,16 @@
         {{serviceStatus.success}}
       </div>
       <div class="form">
-        <text-input label="Email" :error="errors.email" v-model="values.email" type="email"></text-input>
+        <text-input
+          label="Email"
+          placeholder="Enter your email"
+          :error="errors.email"
+          v-model="values.email"
+          type="email"
+        ></text-input>
         <text-input
           label="Password"
+          placeholder="Enter your password"
           :error="errors.password"
           v-model="values.password"
           type="password"
@@ -36,6 +43,7 @@ import VButton from "@/components/Buttons";
 import SideImage from "@/components/Images/SideImage";
 import Typography from "@/components/Typography";
 
+import { LayoutEventBus } from "@/layouts/layoutController";
 import { service, saveToken } from "@/services";
 import { authentication } from "@/mixins/authentication";
 export default {
@@ -61,14 +69,16 @@ export default {
     signIn() {
       this.validateForm();
       if (this.isFormValid()) {
+        LayoutEventBus.$emit("spinner", "on");
         service("https://reqres.in/api/login", "post", this.values)
           .then(response => {
-            console.log(response);
+            LayoutEventBus.$emit("spinner", "off");
             this.handleServiceStatus("Sucess login");
             let { token } = response;
             saveToken(token);
           })
           .catch(err => {
+            LayoutEventBus.$emit("spinner", "off");
             this.handleServiceStatus(null, "The email or password wrong");
           });
       }
@@ -80,7 +90,7 @@ export default {
         email: "",
         password: ""
       };
-      if ((this.email = "")) {
+      if (email === "") {
         this.errors.email = "Email is required.";
       } else if (!this.validEmail(email)) {
         this.errors.email = "Please input the valid email.";

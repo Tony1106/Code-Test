@@ -17,12 +17,14 @@
       <div class="form">
         <text-input
           label="New password"
+          placeholder="Enter your new password"
           :error="errors.newPassword"
           v-model="values.newPassword"
           type="password"
         ></text-input>
         <text-input
           label="Confirm password"
+          placeholder="Confirm your new password"
           :error="errors.confirmPassword"
           v-model="values.confirmPassword"
           type="password"
@@ -61,14 +63,16 @@ export default {
     submitNewPassword() {
       this.validateForm();
       if (this.isFormValid()) {
+        LayoutEventBus.$emit("spinner", "on");
         service("https://reqres.in/api/register", "post", this.values)
           .then(response => {
-            console.log(response);
-            this.handleServiceStatus("Sucess login");
+            LayoutEventBus.$emit("spinner", "off");
+            this.handleServiceStatus("Sucess create new password");
             let { token } = response;
             saveToken(token);
           })
           .catch(err => {
+            LayoutEventBus.$emit("spinner", "off");
             this.handleServiceStatus(null, err);
           });
       }

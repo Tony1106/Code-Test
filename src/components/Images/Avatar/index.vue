@@ -15,17 +15,12 @@ export default {
       switch (this.size) {
         case "small":
           return "image_small";
-          break;
         case "medium":
           return "image_medium";
-          break;
         case "big":
           return "image_big";
-          break;
-
         default:
           return "image_small";
-          break;
       }
     }
   }

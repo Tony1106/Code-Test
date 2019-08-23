@@ -62,7 +62,6 @@ export default {
   font-weight: 500;
   border: none;
   border-radius: 5px;
-  box-shadow: 5px 6px 5px #b1b1b13b;
   transition: 0.3s;
   cursor: pointer;
   &:focus {

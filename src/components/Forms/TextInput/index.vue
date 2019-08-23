@@ -2,9 +2,9 @@
   <div class="form">
     <div class="label">{{label}}</div>
     <input
-      v-bind:type="type"
-      v-bind:placeholder="placeholder"
-      v-bind:value="value"
+      :type="type"
+      :placeholder="placeholder"
+      :value="value"
       v-on:input="$emit('input', $event.target.value.trim())"
     />
     <div class="border"></div>
@@ -34,7 +34,7 @@ export default {
   width: 100%;
   .label {
     font-weight: 800;
-    font-size: 18px;
+    font-size: 20px;
   }
   input {
     width: 100%;
@@ -43,6 +43,10 @@ export default {
     line-height: 18px;
     font-size: 16px;
     font-weight: 400;
+    &::placeholder {
+      color: #dddddd;
+      font-size: 14px;
+    }
     &:focus {
       outline: none;
     }
