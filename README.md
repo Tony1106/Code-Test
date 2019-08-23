@@ -25,7 +25,7 @@ npm  run serve
 ```
 
 ## Usage
-
+.
 📦src
  ┣ 📂assets                 --- Store image and other assets.
  ┣ 📂components             --- Vue components
